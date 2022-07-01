@@ -38,6 +38,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg
+    uniqueID: 1430758961
+    locked: 0
+  - name: grass
+    uniqueID: 645751115
+    locked: 0
+  - name: wall
+    uniqueID: 1043748227
+    locked: 0
+  - name: wheel
+    uniqueID: 1704252941
+    locked: 0
+  - name: body
+    uniqueID: 3422624143
+    locked: 0
+  - name: Gun
+    uniqueID: 3459208869
+    locked: 0
+  - name: Top
+    uniqueID: 3064547515
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
