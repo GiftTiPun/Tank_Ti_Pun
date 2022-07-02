@@ -6,4 +6,5 @@ public class PlayerStat : MonoBehaviour
 {
     public float PlayerHealth;
     public float moveSpeed = 2;
+    
 }

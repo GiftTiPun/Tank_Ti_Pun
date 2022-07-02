@@ -7,18 +7,21 @@ public class PlayerMovement : MonoBehaviour
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     PlayerStat player;
+    PlayerRespawn rePlayer;
     public float bulletSpeed = 10;
     public bool bulletActive = false;
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStat>();
+        rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
         player.PlayerHealth = 20;
     }
     void Update()
     {
         Movement();
         Shooting();
+        Die();
     }
 
     void Movement()
@@ -36,6 +39,18 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 90 - 90 * v);
         }
     }
+   
+    void Die()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            rePlayer.PlayerActive = false;
+            Debug.Log("Die");
+            Destroy(this.gameObject);
+        }
+    }
+
+
 
     void Shooting()
     {
