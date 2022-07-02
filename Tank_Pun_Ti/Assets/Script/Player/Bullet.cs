@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float life = 3;
+    float num = 0;
     PlayerMovement test;
     public void Start()
     {
@@ -13,7 +14,9 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         Destroy(gameObject, life);
+       
     }
+   
 
     void OnCollisionEnter2D(Collision2D collision)
     {
