@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Breakable_Wall
   - UNBreakable_Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
