@@ -44,8 +44,8 @@ public class MainGameManager : NetworkBehaviour
         if (GUILayout.Button(NetworkManager.Singleton.IsServer ? "Move" : "Request Position Change"))
         {
             var playerObject = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject();
-            var player = playerObject.GetComponent<MainPlayer>();
-            player.Move();
+            //var player = playerObject.GetComponent<MainPlayer>();
+            //player.Move();
         }
 
     }
