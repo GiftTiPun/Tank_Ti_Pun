@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using Unity.Netcode;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -65,4 +66,14 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+
+    //Online Test
+    //private void FixedUpdate()
+    //{
+    //    if (IsClient && IsOwner)
+    //    {
+    //        Movement();
+    //    }
+
+    //}
 }

@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerRespawn : MonoBehaviour
 {
     public bool PlayerActive = false;
-    public Transform PlayerSpawnPoint;
+    Transform PlayerSpawnPoint;
     public GameObject PlayerPrefab;
 
-   
+    private void Start()
+    {
+        PlayerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPlayer").GetComponent<Transform>();
+        
+    }
+
     void Update()
     {
         ReSpawn();
@@ -28,8 +33,5 @@ public class PlayerRespawn : MonoBehaviour
         }
         
     }
-    void Die()
-    {
-       
-    }
+    
 }
