@@ -6,10 +6,12 @@ public class Bullet : MonoBehaviour
 {
     public float life = 3;
     float num = 0;
-    PlayerMovement test;
+    PlayerMovement checkBullet;
+    PlayerStat player;
     public void Start()
     {
-        test = GameObject.FindObjectOfType<PlayerMovement>();
+        checkBullet = GameObject.FindObjectOfType<PlayerMovement>();
+        player = GameObject.FindObjectOfType<PlayerStat>();
     }
     void Awake()
     {
@@ -22,14 +24,18 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag== "Enemy")
         {
+            player.score += 1000;
+            Debug.Log(player.score);
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            test.bulletActive = false;
+            checkBullet.bulletActive = false;
         }
         else if(collision.gameObject.tag == "UNBreakable_Wall")
         {
+            player.score -= 50;
+            Debug.Log(player.score);
             Destroy(gameObject);
-            test.bulletActive = false;
+            checkBullet.bulletActive = false;
         }
     }
 }
