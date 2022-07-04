@@ -34,7 +34,7 @@ public class PlayerMovement : NetworkBehaviour
             Shooting();
             Die();
         }
-        if (gameObject.GetComponent<NetworkObject>().IsLocalPlayer)
+        if (bulletPrefab.GetComponent<NetworkObject>().IsOwner)
         {
             ShootingServerRpc();
         }
