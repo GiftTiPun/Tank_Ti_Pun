@@ -25,7 +25,7 @@ public class PlayerMovement : NetworkBehaviour
         if (IsClient && IsOwner)
         {
             Movement();
-            Shooting();
+            ShootingServerRpc();
             Die();
         }
         else
@@ -55,7 +55,20 @@ public class PlayerMovement : NetworkBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 90 - 90 * v);
         }
     }
-   
+
+    void Shooting()
+    {
+        if (bulletActive == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+                bulletActive = true;
+            }
+        }
+
+    }
     void Die()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -68,10 +81,17 @@ public class PlayerMovement : NetworkBehaviour
     }
 
 
-
-    void Shooting()
+    [ServerRpc(RequireOwnership = false)]
+    void ShootingServerRpc()
     {
-        if(bulletActive == false)
+        ShootingClientRpc();
+
+    }
+    [ClientRpc]
+    void ShootingClientRpc()
+    {
+        
+        if (bulletActive == false)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -80,7 +100,7 @@ public class PlayerMovement : NetworkBehaviour
                 bulletActive = true;
             }
         }
-        
+
     }
 
     //Online Test
@@ -89,7 +109,7 @@ public class PlayerMovement : NetworkBehaviour
     //    if (IsClient && IsOwner)
     //    {
     //        Movement();
-            
+
     //    }
 
     //}
