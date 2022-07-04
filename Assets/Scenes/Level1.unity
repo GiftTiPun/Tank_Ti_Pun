@@ -4549,7 +4549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46783eeba7d57f247a7566b9a759a74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BreakAbleTilemap: {fileID: 0}
+  BreakAbleTilemap: {fileID: 1838764120}
 --- !u!1 &2103158292
 GameObject:
   m_ObjectHideFlags: 0

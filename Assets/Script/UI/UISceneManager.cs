@@ -15,12 +15,12 @@ public class UISceneManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(player.PlayerHealth <=0)
-        {
-            BackToMenu();
-            PassValue.currentlevel = 1;
+        //if(player.PlayerHealth <=0)
+        //{
+        //    BackToMenu();
+        //    PassValue.currentlevel = 1;
             
-        }
+        //}
     }
     public void GotoHostJoin()
     {

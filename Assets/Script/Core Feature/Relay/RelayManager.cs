@@ -61,6 +61,7 @@ public class RelayManager : Singleton<RelayManager>
 
         Debug.Log($"Relay Server Generated Join Code: {relayHostData.JoinCode}");
         JC.text = relayHostData.JoinCode;
+        Debug.Log(relayHostData.JoinCode);
 
         return relayHostData;
     }
