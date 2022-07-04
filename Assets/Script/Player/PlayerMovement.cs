@@ -11,6 +11,7 @@ public class PlayerMovement : NetworkBehaviour
     PlayerRespawn rePlayer;
     public float bulletSpeed = 5;
     public bool bulletActive = false;
+    
 
     private void Start()
     {
@@ -18,13 +19,25 @@ public class PlayerMovement : NetworkBehaviour
         rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
         
     }
+
     void Update()
     {
+        if (IsClient && IsOwner)
+        {
+            Movement();
+            Shooting();
+            Die();
+        }
+        else
+        {
+            Movement();
+        }
         //Movement();
-        Shooting();
-        Die();
+        //Shooting();
+        //Die();
     }
 
+    
     void Movement()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -69,13 +82,13 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     //Online Test
-    private void FixedUpdate()
-    {
-        if (IsClient && IsOwner)
-        {
-            Movement();
+    //private void FixedUpdate()
+    //{
+    //    if (IsClient && IsOwner)
+    //    {
+    //        Movement();
             
-        }
+    //    }
 
-    }
+    //}
 }

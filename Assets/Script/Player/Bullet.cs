@@ -32,8 +32,6 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.tag == "Breakable_Wall")
         {
-            
-            
             checkBullet.bulletActive = false;
         }
 
