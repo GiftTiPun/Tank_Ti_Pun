@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Unity.Netcode;
+using Unity.Netcode;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        Movement();
+        //Movement();
         Shooting();
         Die();
     }
@@ -69,12 +69,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Online Test
-    //private void FixedUpdate()
-    //{
-    //    if (IsClient && IsOwner)
-    //    {
-    //        Movement();
-    //    }
+    private void FixedUpdate()
+    {
+        if (IsClient && IsOwner)
+        {
+            Movement();
+            
+        }
 
-    //}
+    }
 }
