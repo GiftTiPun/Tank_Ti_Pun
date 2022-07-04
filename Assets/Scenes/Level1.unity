@@ -2813,6 +2813,7 @@ GameObject:
   - component: {fileID: 1838764120}
   - component: {fileID: 1838764119}
   - component: {fileID: 1838764121}
+  - component: {fileID: 1838764122}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Breakable_Wall
@@ -4536,6 +4537,19 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1838764122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838764117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46783eeba7d57f247a7566b9a759a74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BreakAbleTilemap: {fileID: 0}
 --- !u!1 &2103158292
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,7 +4643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerActive: 0
-  PlayerSpawnPoint: {fileID: 8388591416458613200, guid: ab119090595e80b4cb7ef0d89a77cf92, type: 3}
   PlayerPrefab: {fileID: 6446512532791958781, guid: efbfa9f0745ed6342b3adf448b08b88f, type: 3}
 --- !u!1 &3433726374877616010
 GameObject:

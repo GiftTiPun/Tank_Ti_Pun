@@ -8,6 +8,7 @@ TagManager:
   - UNBreakable_Wall
   - Enemy
   - SpawnPlayer
+  - Bullet
   layers:
   - Default
   - TransparentFX

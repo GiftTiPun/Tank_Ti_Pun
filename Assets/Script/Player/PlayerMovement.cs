@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bulletPrefab;
     PlayerStat player;
     PlayerRespawn rePlayer;
-    public float bulletSpeed = 10;
+    public float bulletSpeed = 5;
     public bool bulletActive = false;
 
     private void Start()

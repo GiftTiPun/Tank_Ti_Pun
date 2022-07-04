@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float life = 3;
-    float num = 0;
+    
     PlayerMovement checkBullet;
     PlayerStat player;
     public void Start()
@@ -30,6 +30,13 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             checkBullet.bulletActive = false;
         }
+        if (collision.gameObject.tag == "Breakable_Wall")
+        {
+            player.score += 25;
+            Debug.Log(player.score);
+            checkBullet.bulletActive = false;
+        }
+
         else if(collision.gameObject.tag == "UNBreakable_Wall")
         {
             player.score -= 50;

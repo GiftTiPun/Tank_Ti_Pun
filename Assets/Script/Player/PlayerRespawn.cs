@@ -14,11 +14,15 @@ public class PlayerRespawn : MonoBehaviour
         
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         ReSpawn();
-        
     }
+    //void fIXUpdate()
+    //{
+    //    ReSpawn();
+        
+    //}
 
     void ReSpawn()
     {
