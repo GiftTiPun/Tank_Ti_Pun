@@ -42,7 +42,7 @@ public class LoginManager : MonoBehaviour
             await RelayManager.Instance.SetupRelay();
 
         }
-        //NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
+        NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
         NetworkManager.Singleton.StartHost();
         
     }
@@ -106,7 +106,7 @@ public class LoginManager : MonoBehaviour
         if (NetworkManager.Singleton.IsHost)
         {
             NetworkManager.Singleton.Shutdown();
-            //NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
+            NetworkManager.Singleton.ConnectionApprovalCallback -= ApprovalCheck;
         }
         else if (NetworkManager.Singleton.IsClient)
         {
@@ -119,7 +119,7 @@ public class LoginManager : MonoBehaviour
 
 
     
-    private void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovalRequest callback)
+    private void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate callback)
     {
         string playerName = Encoding.ASCII.GetString(connectionData);
         bool approveConnection = playerName != playerNameInputField.text;
@@ -151,7 +151,7 @@ public class LoginManager : MonoBehaviour
 
         NetworkLog.LogInfoServer("SpawnPos of " + clientId + " is " + spawnPos.ToString());
         bool createPlayerObject = true;
-        //callback(createPlayerObject, null, approveConnection, spawnPos, null);
+        callback(createPlayerObject, null, approveConnection, spawnPos, null);
 
     }
 }
