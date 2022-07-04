@@ -286,7 +286,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6446512532791958780}
   - component: {fileID: 6446512532791958782}
-  - component: {fileID: 6446512532791958783}
   - component: {fileID: 1848677834}
   - component: {fileID: 1178362065}
   m_Layer: 0
@@ -327,21 +326,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7056606618496017301, guid: e3fbe37e9162c1f4d8550b6059deeb59, type: 3}
   bulletSpeed: 10
   bulletActive: 0
---- !u!114 &6446512532791958783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6446512532791958781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f4764a96f47a94aa67691ebd2a4297, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHealth: 0
-  moveSpeed: 2
-  score: 0
 --- !u!61 &1848677834
 BoxCollider2D:
   m_ObjectHideFlags: 0

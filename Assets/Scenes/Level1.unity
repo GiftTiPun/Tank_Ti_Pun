@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 15846842}
   - component: {fileID: 15846841}
   m_Layer: 5
-  m_Name: numlife
+  m_Name: PlayerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2
+  m_Text: '-'
 --- !u!222 &15846842
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4563,6 +4563,8 @@ GameObject:
   - component: {fileID: 2103158293}
   - component: {fileID: 2103158296}
   - component: {fileID: 2103158297}
+  - component: {fileID: 2103158298}
+  - component: {fileID: 2103158299}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4644,6 +4646,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerActive: 0
   PlayerPrefab: {fileID: 6446512532791958781, guid: efbfa9f0745ed6342b3adf448b08b88f, type: 3}
+--- !u!114 &2103158298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103158292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427f44c2c77cc3b45a1f1967d9298495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playerlife: {fileID: 15846841}
+--- !u!114 &2103158299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103158292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f4764a96f47a94aa67691ebd2a4297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHealth: 3
+  moveSpeed: 2
+  score: 0
 --- !u!1 &3433726374877616010
 GameObject:
   m_ObjectHideFlags: 0

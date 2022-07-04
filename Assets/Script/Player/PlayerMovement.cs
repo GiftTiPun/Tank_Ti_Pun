@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerStat>();
         rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
-        player.PlayerHealth = 20;
+        
     }
     void Update()
     {
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rePlayer.PlayerActive = false;
             Debug.Log("Die");
+            player.PlayerHealth -= 1;
             Destroy(this.gameObject);
         }
     }

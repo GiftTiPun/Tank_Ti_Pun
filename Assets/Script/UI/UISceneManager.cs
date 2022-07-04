@@ -6,7 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class UISceneManager : MonoBehaviour
 {
-    
+    PlayerStat player;
+
+    private void Start()
+    {
+        player = GameObject.FindObjectOfType<PlayerStat>();
+    }
+
+    private void FixedUpdate()
+    {
+        if(player.PlayerHealth <=0)
+        {
+            BackToMenu();
+            PassValue.currentlevel = 1;
+            
+        }
+    }
     public void GotoHostJoin()
     {
         SceneManager.LoadScene(2);
