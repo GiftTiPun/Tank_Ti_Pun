@@ -25,7 +25,7 @@ public class PlayerMovement : NetworkBehaviour
         if (IsClient && IsOwner)
         {
             Movement();
-            
+
             Die();
         }
         else
@@ -38,7 +38,7 @@ public class PlayerMovement : NetworkBehaviour
         {
             ShootingServerRpc();
         }
-
+    }
     
     void Movement()
     {
