@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00009429455, y: 0.36070517}
+  m_Offset: {x: 0.00009429455, y: 0.43723854}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8970877, y: 0.26127428}
+  m_Size: {x: 0.8970877, y: 0.41434103}
   m_EdgeRadius: 0
 --- !u!114 &1895555929
 MonoBehaviour:
@@ -131,7 +131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692081344394473218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.394, z: 0}
+  m_LocalPosition: {x: 0, y: 0.748, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 362793517806418145}
@@ -233,8 +233,8 @@ GameObject:
   - component: {fileID: 384645570}
   - component: {fileID: 384645571}
   m_Layer: 0
-  m_Name: Enemy1
-  m_TagString: Untagged
+  m_Name: Enemy_Kiki
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583048170237937426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.77, y: -3.26, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6989362, y: 0.6989362, z: 0.6989362}
   m_Children:
   - {fileID: 4418141237952424905}
@@ -269,8 +269,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  bulletspeed: 0
   rotation_angel: 0
   canRotate: 1
+  canShoot: 1
+  bulletSpawnPoint: {fileID: 1536607299844780309}
+  bulletPrefab: {fileID: 7056606618496017301, guid: 28c97f58be3d612409cab70446947671, type: 3}
   enemyRb: {fileID: 384645570}
   DetectWall: {fileID: 1895555929}
 --- !u!114 &8200355383249166494
@@ -285,9 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21227905ddd93d04c95cddf6dc7a2411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_Health: 10
-  enemy_Speed: 10
-  enemy_Bullet_Speed: 1
+  enemy_Health: 1
+  enemy_Speed: 3
+  enemy_Bullet_Speed: 4
+  score: 100
 --- !u!50 &384645570
 Rigidbody2D:
   serializedVersion: 4
@@ -322,7 +327,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0034032464, y: 0.016678989}
+  m_Offset: {x: 0.0034032464, y: 0.075550824}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -333,7 +338,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8304988, y: 0.87426424}
+  m_Size: {x: 0.8304988, y: 0.9920079}
   m_EdgeRadius: 0
 --- !u!1 &6139561134325436335
 GameObject:

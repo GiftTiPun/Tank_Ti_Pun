@@ -8,7 +8,6 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] float bulletspeed;
     [SerializeField] float rotation_angel = 0f;
     [SerializeField] bool canRotate = true;
-    [SerializeField] bool canShoot = true;
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     public Rigidbody2D enemyRb;

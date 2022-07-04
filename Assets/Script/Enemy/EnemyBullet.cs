@@ -10,8 +10,9 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("player mongteng");
+            Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.tag == "UNBreakable_Wall"|| collision.gameObject.tag == "Breakable_Wall")
+        else if (collision.gameObject.tag == "UNBreakable_Wall"|| collision.gameObject.tag == "Breakable_Wall"||collision.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
         }
