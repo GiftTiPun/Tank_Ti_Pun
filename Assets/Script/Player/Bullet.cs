@@ -24,23 +24,23 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag== "Enemy")
         {
-            player.score += 1000;
-            Debug.Log(player.score);
+            PlayerStat.score += 1000;
+            Debug.Log(PlayerStat.score);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             checkBullet.bulletActive = false;
         }
         if (collision.gameObject.tag == "Breakable_Wall")
         {
-            player.score += 25;
-            Debug.Log(player.score);
+            
+            
             checkBullet.bulletActive = false;
         }
 
         else if(collision.gameObject.tag == "UNBreakable_Wall")
         {
-            player.score -= 50;
-            Debug.Log(player.score);
+            PlayerStat.score -= 50;
+            Debug.Log(PlayerStat.score);
             Destroy(gameObject);
             checkBullet.bulletActive = false;
         }

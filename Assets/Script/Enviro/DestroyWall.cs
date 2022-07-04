@@ -7,10 +7,12 @@ public class DestroyWall : MonoBehaviour
 {
     public Tilemap BreakAbleTilemap;
     PlayerMovement checkBullet;
+    PlayerStat player;
     void Start()
     {
         BreakAbleTilemap = GetComponent<Tilemap>();
         checkBullet = GameObject.FindObjectOfType<PlayerMovement>();
+        player = GameObject.FindObjectOfType<PlayerStat>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,8 +25,10 @@ public class DestroyWall : MonoBehaviour
                 hitposition.x = hit.point.x - 0.01f * hit.normal.x;
                 hitposition.y = hit.point.y - 0.01f * hit.normal.y;
                 BreakAbleTilemap.SetTile(BreakAbleTilemap.WorldToCell(hitposition), null);
+                
                 Destroy(collision.gameObject);
                 
+
             }
         }
     }
