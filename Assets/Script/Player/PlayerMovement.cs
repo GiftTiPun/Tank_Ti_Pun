@@ -25,7 +25,7 @@ public class PlayerMovement : NetworkBehaviour
         if (IsClient && IsOwner)
         {
             Movement();
-            ShootingServerRpc();
+            
             Die();
         }
         else
@@ -34,10 +34,10 @@ public class PlayerMovement : NetworkBehaviour
             Shooting();
             Die();
         }
-        //Movement();
-        //Shooting();
-        //Die();
-    }
+        if (gameObject.GetComponent<NetworkObject>().IsLocalPlayer)
+        {
+            ShootingServerRpc();
+        }
 
     
     void Movement()
