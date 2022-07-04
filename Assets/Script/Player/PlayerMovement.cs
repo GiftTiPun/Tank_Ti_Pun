@@ -34,9 +34,16 @@ public class PlayerMovement : NetworkBehaviour
             Shooting();
             Die();
         }
-        if (bulletPrefab.GetComponent<NetworkObject>().IsOwner)
+        if(!IsLocalPlayer)
         {
-            ShootingServerRpc();
+            return;
+        }
+        if (bulletActive == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ShootingServerRpc();
+            }
         }
     }
     
@@ -80,6 +87,18 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
+    //void createbullet()
+    //{
+    //    if (bulletActive == false)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+    //            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+    //            bulletActive = true;
+    //        }
+    //    }
+    //}
 
     [ServerRpc(RequireOwnership = false)]
     void ShootingServerRpc()
@@ -91,15 +110,10 @@ public class PlayerMovement : NetworkBehaviour
     void ShootingClientRpc()
     {
         
-        if (bulletActive == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
+        
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                bulletActive = true;
-            }
-        }
+                bulletActive = true;      
 
     }
 
