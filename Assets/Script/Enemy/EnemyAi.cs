@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-    float speed;
-    float rotation_angel = 0;
-    
-    WallDetecting DetectWall;
+    [SerializeField] float speed;
+    [SerializeField] float bulletspeed;
+    [SerializeField] float rotation_angel = 0f;
+    [SerializeField] bool canRotate = true;
+    [SerializeField] bool canShoot = true;
+    public Transform bulletSpawnPoint;
+    public GameObject bulletPrefab;
+    public Rigidbody2D enemyRb;
+    public WallDetecting DetectWall;
     void Start()
     {
-        speed = this.gameObject.GetComponent<EnemyClass>().Enemy_Speed;
+        enemy_Rotate();
+        speed = gameObject.GetComponent<EnemyClass>().enemy_Speed;
+        bulletspeed = gameObject.GetComponent<EnemyClass>().enemy_Bullet_Speed;
+        enemyRb = gameObject.GetComponent<Rigidbody2D>();
+        StartCoroutine(CooldownRotate(2f));
+        StartCoroutine(CooldownShooting(bulletspeed));
     }
 
     
@@ -25,11 +35,55 @@ public class EnemyAi : MonoBehaviour
 
     void enemy_Walk()
     {
-        transform.position = new Vector3(transform.position.x + speed,0,0);
+        if (rotation_angel == 0)
+        {
+            enemyRb.MovePosition(enemyRb.position + (Vector2.up * speed) * Time.deltaTime);
+        }
+        else if (rotation_angel == 1)
+        {
+            enemyRb.MovePosition(enemyRb.position + (Vector2.left * speed) * Time.deltaTime);
+        }
+        else if (rotation_angel == 2)
+        {
+            enemyRb.MovePosition(enemyRb.position + (Vector2.down * speed) * Time.deltaTime);
+        }
+        else if (rotation_angel == 3)
+        {
+            enemyRb.MovePosition(enemyRb.position + (Vector2.right * speed) * Time.deltaTime);
+        }
     }
 
     void enemy_Rotate()
     {
+        if (canRotate)
+        {
+            Debug.Log("rotating");
+            rotation_angel = Random.Range(0, 4);
+            enemyRb.transform.eulerAngles = new Vector3(0, 0, rotation_angel * 90f);
+            canRotate = false;
+        }
         
+        
+
     }
+
+    private IEnumerator CooldownRotate(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            Debug.Log("cooldown");
+            canRotate = true;
+        }
+    }
+    private IEnumerator CooldownShooting(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * 5;
+        }
+    }
+
 }
