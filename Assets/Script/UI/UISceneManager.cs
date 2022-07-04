@@ -30,15 +30,19 @@ public class UISceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    public void GotoGame()
+    public void GotoLoading()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("LoadingStage");
     }
+    
     public void PassLevel()
     {
         PassValue.currentlevel += 1;
         SceneManager.LoadScene("ScoreCal");
     }
+
+   
+
     public void NextLevel()
     {
         SceneManager.LoadScene("Level"+ PassValue.currentlevel);

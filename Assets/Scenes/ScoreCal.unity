@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1915512548}
         m_TargetAssemblyTypeName: UISceneManager, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: GotoLoading
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -739,7 +739,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHealth: 3
   moveSpeed: 2
-  score: 0
 --- !u!114 &1915512550
 MonoBehaviour:
   m_ObjectHideFlags: 0

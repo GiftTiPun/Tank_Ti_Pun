@@ -31,6 +31,8 @@ public class PlayerMovement : NetworkBehaviour
         else
         {
             Movement();
+            Shooting();
+            Die();
         }
         //Movement();
         //Shooting();
