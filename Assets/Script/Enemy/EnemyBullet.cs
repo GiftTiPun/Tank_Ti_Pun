@@ -17,6 +17,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             rePlayer.PlayerActive = false;
+            PlayerStat.PlayerHealth -= 1;
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

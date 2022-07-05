@@ -22,29 +22,29 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
-        //if (IsClient && IsOwner)
-        //{
-        //    Movement();
-            
-        //    Die();
-        //}
-        //else
-        //{
+        if (IsClient && IsOwner)
+        {
+            Movement();
+
+            Die();
+        }
+        else
+        {
             Movement();
             Shooting();
-            //Die();
-        //}
-        //if(!IsLocalPlayer)
-        //{
-        //    return;
-        //}
-        //if (bulletActive == false)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        ShootingServerRpc();
-        //    }
-        //}
+            Die();
+        }
+        if (!IsLocalPlayer)
+        {
+            return;
+        }
+        if (bulletActive == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ShootingServerRpc();
+            }
+        }
     }
     
     void Movement()
@@ -88,45 +88,45 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    //void createbullet()
-    //{
-    //    if (bulletActive == false)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.Space))
-    //        {
-    //            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-    //            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-    //            bulletActive = true;
-    //        }
-    //    }
-    //}
+    void createbullet()
+    {
+        if (bulletActive == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+                bulletActive = true;
+            }
+        }
+    }
 
-    //[ServerRpc(RequireOwnership = false)]
-    //void ShootingServerRpc()
-    //{
-    //    ShootingClientRpc();
+    [ServerRpc(RequireOwnership = false)]
+    void ShootingServerRpc()
+    {
+        ShootingClientRpc();
 
-    //}
-    //[ClientRpc]
-    //void ShootingClientRpc()
-    //{
-        
-        
-    //            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-    //            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-    //            bulletActive = true;      
+    }
+    [ClientRpc]
+    void ShootingClientRpc()
+    {
 
-    //}
+
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+        bulletActive = true;
+
+    }
 
     //Online Test
-    //private void FixedUpdate()
-    //{
-    //    if (IsClient && IsOwner)
-    //    {
-    //        Movement();
+    private void FixedUpdate()
+    {
+        if (IsClient && IsOwner)
+        {
+            Movement();
 
-    //    }
+        }
 
-    //}
+    }
 
 }
