@@ -326,7 +326,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 20000
+  m_Text: '-'
 --- !u!222 &819351897
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: '-'
 --- !u!222 &1469751398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9814d9c9631210c44b18a9b8280ea1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passText: {fileID: 0}
 --- !u!114 &1915512549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,7 +738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f4764a96f47a94aa67691ebd2a4297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHealth: 3
   moveSpeed: 2
 --- !u!114 &1915512550
 MonoBehaviour:
@@ -752,6 +752,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentscore: {fileID: 1469751397}
+  highscoreText: {fileID: 819351896}
+  highscore: 0
 --- !u!1 &1950098253
 GameObject:
   m_ObjectHideFlags: 0

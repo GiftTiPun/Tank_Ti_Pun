@@ -10,11 +10,13 @@ public class UISceneManager : MonoBehaviour
     PlayerStat player;
     EnemySpawn currentEnemy;
     public GameObject passText;
+    PlayerRespawn rePlayer;
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStat>();
         currentEnemy = GameObject.FindObjectOfType<EnemySpawn>();
+        rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
     }
 
     private void FixedUpdate()
@@ -27,11 +29,15 @@ public class UISceneManager : MonoBehaviour
             PlayerStat.PlayerHealth = 3;
 
         }
-        if(currentEnemy.EnemyOnsite.Length == 0 && currentEnemy.Enemylist.Count ==0)
+        if(rePlayer != null)
         {
-            StartCoroutine(coroutineA());
-            
+            if (currentEnemy.EnemyOnsite.Length == 0 && currentEnemy.Enemylist.Count == 0)
+            {
+                StartCoroutine(coroutineA());
+
+            }
         }
+        
     }
 
     IEnumerator coroutineA()
