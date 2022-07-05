@@ -11,16 +11,20 @@ public class EnemySpawn : MonoBehaviour
 
 
     private void Awake()
-    {
-        
-        spawnCooldown = false;
+    {    
+        spawnCooldown = true;
         StartCoroutine(SpawnEnemyCooldown(3f));
     }
     private void Start()
     {
         EnemyOnsite = GameObject.FindGameObjectsWithTag("Enemy");
+        Invoke("WaitSpawn", 2f);
     }
 
+    void WaitSpawn()
+    {
+        spawnCooldown = false;
+    }
     private void Update()
     {
         EnemyOnsite = GameObject.FindGameObjectsWithTag("Enemy");

@@ -8,6 +8,6 @@ public class ItemStat : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this.gameObject, 60f);
+        Destroy(this.gameObject, 10f);
     }
 }
