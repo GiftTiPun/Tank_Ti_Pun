@@ -9,4 +9,6 @@ public class PlayerStat : MonoBehaviour
     public static float score ;
     public static float highscore;
 
+    public static float onlineScore;
+
 }

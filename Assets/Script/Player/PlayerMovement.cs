@@ -8,7 +8,7 @@ public class PlayerMovement : NetworkBehaviour
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     PlayerStat player;
-    PlayerRespawn rePlayer;
+    PlayerRespawn rePlayer;   
     public float bulletSpeed = 5;
     public static bool bulletActive = false;
 
@@ -27,7 +27,7 @@ public class PlayerMovement : NetworkBehaviour
             Movement();
             Die();
 
-            if (bulletActive == false && IsLocalPlayer)
+            if (bulletActive == false )
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -35,7 +35,7 @@ public class PlayerMovement : NetworkBehaviour
                 }
             }
         }
-        else
+        else if (!IsClient && !IsOwner)
         {
             Movement();
             Shooting();

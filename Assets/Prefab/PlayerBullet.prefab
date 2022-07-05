@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 974416664}
   - component: {fileID: 974416663}
   - component: {fileID: -8352282455296770032}
-  - component: {fileID: -8401384833034720350}
-  - component: {fileID: 3790242628191777484}
+  - component: {fileID: -3039242701674790851}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: Bullet
@@ -154,7 +153,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-8401384833034720350
+--- !u!114 &-3039242701674790851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7056606618496017301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c9647dc784a46bca664910f182491e, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -180,15 +179,3 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
---- !u!114 &3790242628191777484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7056606618496017301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
