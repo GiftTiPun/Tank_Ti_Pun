@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     public float stayTime = 2;
     
@@ -37,8 +38,8 @@ public class Bullet : MonoBehaviour
 
          if (collision.gameObject.tag == "UNBreakable_Wall")
         {
-           
-            Destroy(gameObject);
+
+            DestroybulletServerRpc();
             PlayerMovement.bulletActive = false;
         }
          if (collision.gameObject.tag == "Water") 
@@ -50,8 +51,14 @@ public class Bullet : MonoBehaviour
          if(collision.gameObject.tag == "EnemyBullet")
         {
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            DestroybulletServerRpc();
             PlayerMovement.bulletActive = false;
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void DestroybulletServerRpc()
+    {
+        Destroy(gameObject);
     }
 }

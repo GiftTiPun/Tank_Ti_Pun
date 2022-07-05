@@ -34,7 +34,7 @@ public class PlayerMovement : NetworkBehaviour
             Shooting();
             Die();
         }
-        if (!IsLocalPlayer)
+        if (!IsOwner)
         {
             return;
         }
@@ -88,45 +88,48 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    void createbullet()
-    {
-        if (bulletActive == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                bulletActive = true;
-            }
-        }
-    }
+    //void createbullet()
+    //{
+    //    if (bulletActive == false)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+    //            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+    //            bulletActive = true;
+    //        }
+    //    }
+    //}
 
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc(Delivery = RpcDelivery.Reliable)]
     void ShootingServerRpc()
     {
-        ShootingClientRpc();
-
-    }
-    [ClientRpc]
-    void ShootingClientRpc()
-    {
-
-
-        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
         bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+        bullet.SpawnWithOwnership(OwnerClientId);
         bulletActive = true;
 
     }
+    //[ClientRpc]
+    //void ShootingClientRpc()
+    //{
+
+
+    //    NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
+    //    bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+    //    bulletActive = true;
+
+    //}
 
     //Online Test
-    private void FixedUpdate()
-    {
-        if (IsClient && IsOwner)
-        {
-            Movement();
+    //private void FixedUpdate()
+    //{
+    //    if (IsClient && IsOwner)
+    //    {
+    //        Movement();
 
-        }
+    //    }
 
-    }
+    //}
 
 }
