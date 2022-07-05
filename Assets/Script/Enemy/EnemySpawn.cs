@@ -46,6 +46,5 @@ public class EnemySpawn : MonoBehaviour
         Instantiate(Enemylist[randomEnemy].gameObject, spawnpoint[randomSpawnPoint].position, spawnpoint[randomSpawnPoint].rotation);
         Enemylist.RemoveAt(randomEnemy);
         spawnCooldown = true;
-
     }
 }

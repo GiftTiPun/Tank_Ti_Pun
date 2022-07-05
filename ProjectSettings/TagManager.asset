@@ -13,6 +13,7 @@ TagManager:
   - EnemyBullet
   - LevelWall
   - Shield
+  - item
   layers:
   - Default
   - TransparentFX

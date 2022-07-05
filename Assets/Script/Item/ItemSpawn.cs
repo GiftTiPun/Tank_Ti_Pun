@@ -5,7 +5,6 @@ using UnityEngine;
 public class ItemSpawn : MonoBehaviour
 {
     [SerializeField] int Remaining_Enemy;
-    [SerializeField] bool canSpawn;
     [SerializeField] int spawnTime = 0;
     public Transform[] spawnpoint;
     public List<GameObject> Itemlist = new List<GameObject>();
@@ -13,7 +12,6 @@ public class ItemSpawn : MonoBehaviour
     private void Start()
     {
         Remaining_Enemy = GameObject.FindObjectOfType<EnemySpawn>().Enemylist.Count + GameObject.FindObjectOfType<EnemySpawn>().EnemyOnsite.Length;
-        canSpawn = false;
     }
 
     private void Update()

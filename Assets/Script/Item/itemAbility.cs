@@ -5,24 +5,32 @@ using System;
 
 public class itemAbility : MonoBehaviour
 {
-    [SerializeField] static int starReceive = 0;
+    public static int starReceive = 0;
 
     public GameObject LevelWallPrefab;
 
-    GameObject Shield;
+    public GameObject Shield;
     GameObject player;
     GameObject LevelWall;
     GameObject[] EnemiesOnSite;
     private void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        Invoke("ShieldDisable", 2f);
     }
+
+    private void ShieldDisable()
+    {
+        Shield.SetActive(false);
+    }
+
     private void Update()
     {       
-        player = GameObject.FindGameObjectsWithTag("Player")[0];
-        Shield = GameObject.Find("/" + player.name + "/Shield");
-        LevelWall = GameObject.FindGameObjectsWithTag("LevelWall")[0];
-        EnemiesOnSite = GameObject.FindObjectOfType<EnemySpawn>().EnemyOnsite;
+        player = GameObject.FindGameObjectWithTag("Player");
+        LevelWall = GameObject.FindGameObjectWithTag("LevelWall");
+        EnemiesOnSite = GameObject.FindGameObjectsWithTag("Enemy");
+        Shield.transform.position = player.transform.position;
+        Shield.transform.rotation = player.transform.rotation;
     }
     public void Item_ExtraLife()
     {
@@ -61,21 +69,19 @@ public class itemAbility : MonoBehaviour
     {
         foreach (GameObject enemy in EnemiesOnSite)
         {
-            enemy.GetComponent<EnemyAi>().speed =0;
-            enemy.GetComponent<EnemyAi>().bulletspeed = 0; 
+            enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            Debug.Log("freeze");
         }
         StartCoroutine(FrostTime(5f));
-
-        foreach (GameObject enemy in EnemiesOnSite)
-        {
-            enemy.GetComponent<EnemyAi>().speed = enemy.GetComponent<EnemyClass>().enemy_Speed;
-            enemy.GetComponent<EnemyAi>().bulletspeed = enemy.GetComponent<EnemyClass>().enemy_Bullet_Speed;
-        }
-
     }
 
     private IEnumerator FrostTime(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);           
+        yield return new WaitForSeconds(waitTime);
+        foreach (GameObject enemy in EnemiesOnSite)
+        {
+            enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            Debug.Log("unfreeze");
+        }
     }
 }

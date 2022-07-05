@@ -247,7 +247,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8555496018267663738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,6 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 547690864800046709}
   bulletPrefab: {fileID: 7056606618496017301, guid: 28c97f58be3d612409cab70446947671, type: 3}
   enemyRb: {fileID: 3430061274988069791}
-  DetectWall: {fileID: 8925351904589613198}
 --- !u!1 &4014964365090602064
 GameObject:
   m_ObjectHideFlags: 0
