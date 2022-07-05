@@ -31,15 +31,18 @@ public class Bullet : NetworkBehaviour
             Destroy(gameObject);
             PlayerMovement.bulletActive = false;
         }
-         if (collision.gameObject.tag == "Breakable_Wall")
+         if (collision.gameObject.tag == "Breakable_Wall" )
         {
+            DestroybulletClientRpc();
+            Destroy(gameObject);
             PlayerMovement.bulletActive = false;
         }
 
-         if (collision.gameObject.tag == "UNBreakable_Wall")
+         if (collision.gameObject.tag == "UNBreakable_Wall" )
         {
 
-            DestroybulletServerRpc();
+            DestroybulletClientRpc();
+            Destroy(gameObject);
             PlayerMovement.bulletActive = false;
         }
          if (collision.gameObject.tag == "Water") 
@@ -48,12 +51,19 @@ public class Bullet : NetworkBehaviour
             Destroy(gameObject,2);
             PlayerMovement.bulletActive = false;
         }
-         if(collision.gameObject.tag == "EnemyBullet")
+         if(collision.gameObject.tag == "EnemyBullet" )
         {
             Destroy(collision.gameObject);
-            DestroybulletServerRpc();
+            Destroy(gameObject);
+            DestroybulletClientRpc();
             PlayerMovement.bulletActive = false;
         }
+        //if (collision.gameObject.tag == "Player")
+        //{
+            
+        //    DestroybulletServerRpc();
+        //    PlayerMovement.bulletActive = false;
+        //}
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -61,4 +71,12 @@ public class Bullet : NetworkBehaviour
     {
         Destroy(gameObject);
     }
+
+    [ClientRpc]
+    private void DestroybulletClientRpc()
+    {
+        DestroybulletServerRpc();
+    }
+
+
 }

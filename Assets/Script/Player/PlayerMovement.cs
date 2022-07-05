@@ -25,8 +25,15 @@ public class PlayerMovement : NetworkBehaviour
         if (IsClient && IsOwner)
         {
             Movement();
-
             Die();
+
+            if (bulletActive == false && IsLocalPlayer)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ShootingServerRpc();
+                }
+            }
         }
         else
         {
@@ -34,17 +41,17 @@ public class PlayerMovement : NetworkBehaviour
             Shooting();
             Die();
         }
-        if (!IsOwner)
-        {
-            return;
-        }
-        if (bulletActive == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ShootingServerRpc();
-            }
-        }
+        //if (!IsOwner)
+        //{
+        //    return;
+        //}
+        //if (bulletActive == false &&IsLocalPlayer)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //        ShootingServerRpc();
+        //    }
+        //}
     }
     
     void Movement()
@@ -69,10 +76,11 @@ public class PlayerMovement : NetworkBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                bulletActive = true;
-                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                
+                bullet.SpawnWithOwnership(OwnerClientId);
+                bulletActive = true;
+
             }
         }
 
@@ -104,22 +112,27 @@ public class PlayerMovement : NetworkBehaviour
     [ServerRpc(Delivery = RpcDelivery.Reliable)]
     void ShootingServerRpc()
     {
+        ShootingClientRpc();
+        //NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
+        ////bullet.GetComponent<NetworkObject>().GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+
+        //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+        //bullet.SpawnWithOwnership(OwnerClientId);
+        //bulletActive = true;
+
+    }
+    [ClientRpc]
+    void ShootingClientRpc()
+    {
+        //ShootingServerRpc();
         NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
+        //bullet.GetComponent<NetworkObject>().GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+
         bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
         bullet.SpawnWithOwnership(OwnerClientId);
         bulletActive = true;
 
     }
-    //[ClientRpc]
-    //void ShootingClientRpc()
-    //{
-
-
-    //    NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
-    //    bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-    //    bulletActive = true;
-
-    //}
 
     //Online Test
     //private void FixedUpdate()

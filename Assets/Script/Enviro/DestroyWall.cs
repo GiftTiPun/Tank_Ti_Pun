@@ -26,7 +26,7 @@ public class DestroyWall : MonoBehaviour
                 hitposition.y = hit.point.y - 0.01f * hit.normal.y;
                 BreakAbleTilemap.SetTile(BreakAbleTilemap.WorldToCell(hitposition), null);
                 
-                Destroy(collision.gameObject);
+                
                 
 
             }
