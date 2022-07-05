@@ -11,7 +11,7 @@ public class EnemyAi : MonoBehaviour
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     public Rigidbody2D enemyRb;
-    public WallDetecting DetectWall;
+    
     void Start()
     {
         enemy_Rotate();
@@ -21,12 +21,11 @@ public class EnemyAi : MonoBehaviour
         StartCoroutine(CooldownRotate(2f));
         StartCoroutine(CooldownShooting(bulletspeed));
     }
-
-    
+  
     void Update()
     {
         enemy_Walk();
-        if (DetectWall.Istouching_Wall)
+        if (canRotate)
         {
             enemy_Rotate();
         }
@@ -54,16 +53,10 @@ public class EnemyAi : MonoBehaviour
 
     void enemy_Rotate()
     {
-        if (canRotate)
-        {
-            Debug.Log("rotating");
-            rotation_angel = Random.Range(0, 4);
-            enemyRb.transform.eulerAngles = new Vector3(0, 0, rotation_angel * 90f);
-            canRotate = false;
-        }
-        
-        
-
+        Debug.Log("rotating");
+        rotation_angel = Random.Range(0, 4);
+        enemyRb.transform.eulerAngles = new Vector3(0, 0, rotation_angel * 90f);
+        canRotate = false;
     }
 
     private IEnumerator CooldownRotate(float waitTime)

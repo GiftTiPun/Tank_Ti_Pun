@@ -510,7 +510,6 @@ MonoBehaviour:
   bulletspeed: 0
   rotation_angel: 0
   canRotate: 1
-  canShoot: 1
   bulletSpawnPoint: {fileID: 5315709428419195585}
   bulletPrefab: {fileID: 7056606618496017301, guid: 28c97f58be3d612409cab70446947671, type: 3}
   enemyRb: {fileID: 3402354841267257255}
@@ -666,7 +665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8786008350373955862
 Transform:
   m_ObjectHideFlags: 0
