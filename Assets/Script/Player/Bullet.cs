@@ -4,43 +4,54 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float life = 3;
+    public float stayTime = 2;
     
-    PlayerMovement checkBullet;
+    PlayerMovement test;
     PlayerStat player;
     public void Start()
     {
-        checkBullet = GameObject.FindObjectOfType<PlayerMovement>();
+        test = GameObject.FindObjectOfType<PlayerMovement>();
         player = GameObject.FindObjectOfType<PlayerStat>();
     }
-    void Awake()
-    {
-        Destroy(gameObject, life);
+    //void Awake()
+    //{
+    //    Destroy(gameObject, life);
        
-    }
+    //}
    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag== "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            PlayerStat.score += 1000;
+            PlayerStat.score += collision.gameObject.GetComponent<EnemyClass>().score;
             Debug.Log(PlayerStat.score);
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            checkBullet.bulletActive = false;
+            PlayerMovement.bulletActive = false;
         }
-        if (collision.gameObject.tag == "Breakable_Wall")
+         if (collision.gameObject.tag == "Breakable_Wall")
         {
-            checkBullet.bulletActive = false;
+            PlayerMovement.bulletActive = false;
         }
 
-        else if(collision.gameObject.tag == "UNBreakable_Wall")
+         if (collision.gameObject.tag == "UNBreakable_Wall")
         {
-            PlayerStat.score -= 50;
-            Debug.Log(PlayerStat.score);
+           
             Destroy(gameObject);
-            checkBullet.bulletActive = false;
+            PlayerMovement.bulletActive = false;
+        }
+         if (collision.gameObject.tag == "Water") 
+        {
+           
+            Destroy(gameObject,2);
+            PlayerMovement.bulletActive = false;
+        }
+         if(collision.gameObject.tag == "EnemyBullet")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            PlayerMovement.bulletActive = false;
         }
     }
 }

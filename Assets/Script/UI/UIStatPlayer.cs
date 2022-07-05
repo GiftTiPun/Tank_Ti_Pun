@@ -6,19 +6,10 @@ using UnityEngine.UI;
 public class UIStatPlayer : MonoBehaviour
 {
     public Text Playerlife;
-    PlayerStat player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        player = GameObject.FindObjectOfType<PlayerStat>();
-        
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
-        Debug.Log(player.PlayerHealth);
-        Playerlife.text = player.PlayerHealth.ToString();
+        
+        Playerlife.text = PlayerStat.PlayerHealth.ToString();
     }
 }

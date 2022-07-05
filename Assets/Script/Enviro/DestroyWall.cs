@@ -17,7 +17,7 @@ public class DestroyWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Bullet"))
+        if(collision.gameObject.CompareTag("Bullet")|| collision.gameObject.CompareTag("EnemyBullet"))
         {
             Vector3 hitposition = Vector3.zero;
             foreach(ContactPoint2D hit in collision.contacts)

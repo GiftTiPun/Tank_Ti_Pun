@@ -6,7 +6,7 @@ public class EnemySpawn : MonoBehaviour
 {
     bool spawnCooldown;
     public Transform[] spawnpoint;
-    GameObject[] EnemyOnsite;
+    public GameObject[] EnemyOnsite;
     public List<GameObject> Enemylist = new List<GameObject>();
 
 

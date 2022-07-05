@@ -327,7 +327,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 6446512531721791736}
   bulletPrefab: {fileID: 7056606618496017301, guid: e3fbe37e9162c1f4d8550b6059deeb59, type: 3}
   bulletSpeed: 10
-  bulletActive: 0
+  bulletActive: 1
 --- !u!61 &1848677834
 BoxCollider2D:
   m_ObjectHideFlags: 0

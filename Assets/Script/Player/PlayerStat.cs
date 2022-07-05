@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
-    public float PlayerHealth =3;
+    public static float PlayerHealth =3;
     public float moveSpeed = 2;
     public static float score ;
     

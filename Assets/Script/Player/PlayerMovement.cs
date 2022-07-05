@@ -10,41 +10,41 @@ public class PlayerMovement : NetworkBehaviour
     PlayerStat player;
     PlayerRespawn rePlayer;
     public float bulletSpeed = 5;
-    public bool bulletActive = false;
-    
+    public static bool bulletActive = false;
+
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStat>();
         rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
-        
+       
     }
 
     void Update()
     {
-        if (IsClient && IsOwner)
-        {
-            Movement();
-
-            Die();
-        }
-        else
-        {
+        //if (IsClient && IsOwner)
+        //{
+        //    Movement();
+            
+        //    Die();
+        //}
+        //else
+        //{
             Movement();
             Shooting();
-            Die();
-        }
-        if(!IsLocalPlayer)
-        {
-            return;
-        }
-        if (bulletActive == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ShootingServerRpc();
-            }
-        }
+            //Die();
+        //}
+        //if(!IsLocalPlayer)
+        //{
+        //    return;
+        //}
+        //if (bulletActive == false)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //        ShootingServerRpc();
+        //    }
+        //}
     }
     
     void Movement()
@@ -69,9 +69,10 @@ public class PlayerMovement : NetworkBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                bulletActive = true;
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                bulletActive = true;
+                
             }
         }
 
@@ -82,7 +83,7 @@ public class PlayerMovement : NetworkBehaviour
         {
             rePlayer.PlayerActive = false;
             Debug.Log("Die");
-            player.PlayerHealth -= 1;
+            PlayerStat.PlayerHealth -= 1;
             Destroy(this.gameObject);
         }
     }
@@ -100,22 +101,22 @@ public class PlayerMovement : NetworkBehaviour
     //    }
     //}
 
-    [ServerRpc(RequireOwnership = false)]
-    void ShootingServerRpc()
-    {
-        ShootingClientRpc();
+    //[ServerRpc(RequireOwnership = false)]
+    //void ShootingServerRpc()
+    //{
+    //    ShootingClientRpc();
 
-    }
-    [ClientRpc]
-    void ShootingClientRpc()
-    {
+    //}
+    //[ClientRpc]
+    //void ShootingClientRpc()
+    //{
         
         
-                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                bulletActive = true;      
+    //            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+    //            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+    //            bulletActive = true;      
 
-    }
+    //}
 
     //Online Test
     //private void FixedUpdate()
@@ -127,4 +128,5 @@ public class PlayerMovement : NetworkBehaviour
     //    }
 
     //}
+
 }

@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    
-    private void OnTriggerEnter2D(Collider2D collision)
+    PlayerRespawn rePlayer;
+    private void Start()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("player mongteng");
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
-        }
-        else if (collision.gameObject.tag == "UNBreakable_Wall" || collision.gameObject.tag == "Breakable_Wall")
-        {
-            Destroy(this.gameObject);
-        }
+       
+        rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
+
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);          
+            rePlayer.PlayerActive = false;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
-        Destroy(this.gameObject);
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+
+
+        if (collision.gameObject.tag == "UNBreakable_Wall")
+        {
+
+            Destroy(gameObject);
+
+        }
+        if (collision.gameObject.tag == "Water")
+        {
+
+            Destroy(gameObject, 2);
+
+        }
     }
 }
