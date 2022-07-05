@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] float bulletspeed;
+    public float speed;
+    public float bulletspeed;
     [SerializeField] float rotation_angel = 0f;
     [SerializeField] bool canRotate = true;
     public Transform bulletSpawnPoint;

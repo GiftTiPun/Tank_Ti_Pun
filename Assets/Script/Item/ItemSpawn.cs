@@ -4,46 +4,45 @@ using UnityEngine;
 
 public class ItemSpawn : MonoBehaviour
 {
-    bool spawnCooldown;
+    [SerializeField] int Remaining_Enemy;
+    [SerializeField] bool canSpawn;
+    [SerializeField] int spawnTime = 0;
     public Transform[] spawnpoint;
     public List<GameObject> Itemlist = new List<GameObject>();
 
-
-    private void Awake()
-    {
-
-        spawnCooldown = false;
-        StartCoroutine(SpawnEnemyCooldown(3f));
-    }
     private void Start()
     {
-        
+        Remaining_Enemy = GameObject.FindObjectOfType<EnemySpawn>().Enemylist.Count + GameObject.FindObjectOfType<EnemySpawn>().EnemyOnsite.Length;
+        canSpawn = false;
     }
 
     private void Update()
     {
-        
-        if (!spawnCooldown )
+        Remaining_Enemy = GameObject.FindObjectOfType<EnemySpawn>().Enemylist.Count + GameObject.FindObjectOfType<EnemySpawn>().EnemyOnsite.Length;
+        CheckSpawnItem();
+    }
+
+    void CheckSpawnItem()
+    {
+        if (Remaining_Enemy == 8 && spawnTime == 0)
         {
-            SpawnEnemy();
+            SpawnItem();
+        }
+        else if (Remaining_Enemy == 5 && spawnTime == 1)
+        {
+            SpawnItem();
+        }
+        else if (Remaining_Enemy == 2 && spawnTime == 2)
+        {
+            SpawnItem();
         }
     }
 
-    private IEnumerator SpawnEnemyCooldown(float waitTime)
+    void SpawnItem()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(waitTime);
-            spawnCooldown = false;
-        }
-    }
-
-    void SpawnEnemy()
-    {
-        int randomEnemy = Random.Range(0, Itemlist.Count);
+        spawnTime++;
+        int randomItem = Random.Range(0, Itemlist.Count);
         int randomSpawnPoint = Random.Range(0, 3);
-        Instantiate(Itemlist[randomEnemy].gameObject, spawnpoint[randomSpawnPoint].position, spawnpoint[randomSpawnPoint].rotation);
-        spawnCooldown = true;
-
+        Instantiate(Itemlist[randomItem].gameObject, spawnpoint[randomSpawnPoint].position, spawnpoint[randomSpawnPoint].rotation);
     }
 }
