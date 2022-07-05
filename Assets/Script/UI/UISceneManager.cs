@@ -73,6 +73,13 @@ public class UISceneManager : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level"+ PassValue.currentlevel);
+        if(PassValue.currentlevel <5)
+        {
+            SceneManager.LoadScene("Level" + PassValue.currentlevel);
+        }
+        else
+        {
+            BackToMenu();
+        }
     }
 }

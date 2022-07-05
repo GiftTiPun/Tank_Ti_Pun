@@ -11,13 +11,14 @@ public class PlayerMovement : NetworkBehaviour
     PlayerRespawn rePlayer;   
     public float bulletSpeed = 5;
     public static bool bulletActive = false;
+    OnlineRespawn totalPlayer;
 
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStat>();
         rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
-       
+       totalPlayer = GameObject.FindObjectOfType<OnlineRespawn>();
     }
 
     void Update()
@@ -27,7 +28,7 @@ public class PlayerMovement : NetworkBehaviour
             Movement();
             Die();
 
-            if (bulletActive == false )
+            if (bulletActive == false && totalPlayer.playeringame.Value >=1)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {

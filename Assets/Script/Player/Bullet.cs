@@ -9,6 +9,7 @@ public class Bullet : NetworkBehaviour
     
     PlayerMovement test;
     PlayerStat player;
+   
     public void Start()
     {
         test = GameObject.FindObjectOfType<PlayerMovement>();
@@ -58,10 +59,10 @@ public class Bullet : NetworkBehaviour
             DestroybulletClientRpc();
             PlayerMovement.bulletActive = false;
         }
-        //if (collision.gameObject.tag == "Player")
+        //if (collision.gameObject.tag == "Player" && !IsOwner)
         //{
-            
-        //    DestroybulletServerRpc();
+        //    Debug.Log("Hit");
+        //    DestroybulletClientRpc();
         //    PlayerMovement.bulletActive = false;
         //}
     }
@@ -78,5 +79,5 @@ public class Bullet : NetworkBehaviour
         DestroybulletServerRpc();
     }
 
-
+    
 }

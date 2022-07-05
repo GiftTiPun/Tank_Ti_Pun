@@ -1,39 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class OnlineRespawn : MonoBehaviour
+public class OnlineRespawn : NetworkBehaviour
 {
-    public bool PlayerActive = true;
-    Transform PlayerSpawnPoint;
-    public GameObject PlayerPrefab;
+    public NetworkVariable<int> playeringame = new NetworkVariable<int>();
+
+    private void Update()
+    {
+        
+        Debug.Log("Num = "+playeringame.Value);
+    }
+    public int PlayerinGame
+    {
+        get
+        {
+            return playeringame.Value;
+        }
+    }
 
     private void Start()
     {
-        PlayerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPlayer").GetComponent<Transform>();
-    }
-
-    private void FixedUpdate()
-    {
-        ReSpawn();
-    }
-    //void fIXUpdate()
-    //{
-    //    ReSpawn();
-
-    //}
-
-    void ReSpawn()
-    {
-        if (PlayerActive == false)
+        NetworkManager.Singleton.OnClientConnectedCallback += (id) =>
+         {
+             if(IsServer)
+             playeringame.Value++;
+         };
+        NetworkManager.Singleton.OnClientDisconnectCallback += (id) =>
         {
-            var Createplayer = Instantiate(PlayerPrefab, PlayerSpawnPoint.position, PlayerSpawnPoint.rotation);
-            PlayerActive = true;
-        }
-        else
-        {
-            Debug.Log("Alive");
-        }
-
+            if (IsServer)
+                playeringame.Value--;
+        };
     }
 }
