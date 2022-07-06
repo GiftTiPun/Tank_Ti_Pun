@@ -14,6 +14,7 @@ TagManager:
   - LevelWall
   - Shield
   - item
+  - Ice
   layers:
   - Default
   - TransparentFX
