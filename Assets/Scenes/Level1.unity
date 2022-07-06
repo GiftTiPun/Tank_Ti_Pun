@@ -232,8 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9edcd008320d64ba7d3742c8174ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelWallPrefab: {fileID: 7910990125426626940, guid: f88fcf22ff7061942a028074b2492751, type: 3}
-  Shield: {fileID: 2032270724}
 --- !u!114 &82366731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,20 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07be3f6a22012948803feb82d880e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Remaining_Enemy: 0
-  spawnTime: 0
-  spawnpoint:
-  - {fileID: 1929184129}
-  - {fileID: 667005215}
-  - {fileID: 1166556408}
-  - {fileID: 1802366203}
-  Itemlist:
-  - {fileID: 3974199207268956265, guid: c6210a89c4d4c15419a44e36173934e0, type: 3}
-  - {fileID: 3042294409369592923, guid: 6de2a36a75f4de94ea930117e28f3860, type: 3}
-  - {fileID: 228151989447817239, guid: 794e05c091ca4df47b4f29f394228208, type: 3}
-  - {fileID: 8633707598532437198, guid: 7f9f5cadbf0d8ac48986d61535c607a9, type: 3}
-  - {fileID: 6529586188647925144, guid: c37feaa9dc6641342921b2dc401455e0, type: 3}
-  - {fileID: 6793359177720643324, guid: 152f5be46e3b60d428fccbbfb056fb57, type: 3}
 --- !u!4 &82366732
 Transform:
   m_ObjectHideFlags: 0

@@ -6,21 +6,18 @@ using Unity.Netcode;
 public class Bullet : NetworkBehaviour
 {
     public float stayTime = 2;
-    
+    Transform PlayerSpawnPoint;
     PlayerMovement test;
     PlayerStat player;
+    string playername;
    
     public void Start()
     {
         test = GameObject.FindObjectOfType<PlayerMovement>();
         player = GameObject.FindObjectOfType<PlayerStat>();
+        PlayerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPlayer").GetComponent<Transform>();
     }
-    //void Awake()
-    //{
-    //    Destroy(gameObject, life);
-       
-    //}
-   
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,12 +27,14 @@ public class Bullet : NetworkBehaviour
             Debug.Log(PlayerStat.score);
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            PlayerMovement.offlinebullet = false;
             PlayerMovement.bulletActive = false;
         }
          if (collision.gameObject.tag == "Breakable_Wall" )
         {
             DestroybulletClientRpc();
             Destroy(gameObject);
+            PlayerMovement.offlinebullet = false;
             PlayerMovement.bulletActive = false;
         }
 
@@ -44,12 +43,12 @@ public class Bullet : NetworkBehaviour
 
             DestroybulletClientRpc();
             Destroy(gameObject);
+            PlayerMovement.offlinebullet = false;
             PlayerMovement.bulletActive = false;
         }
          if (collision.gameObject.tag == "Water") 
         {
            
-            Destroy(gameObject,2);
             PlayerMovement.bulletActive = false;
         }
          if(collision.gameObject.tag == "EnemyBullet" )
@@ -57,15 +56,27 @@ public class Bullet : NetworkBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             DestroybulletClientRpc();
+            PlayerMovement.offlinebullet = false;
             PlayerMovement.bulletActive = false;
         }
-        //if (collision.gameObject.tag == "Player" && !IsOwner)
-        //{
-        //    Debug.Log("Hit");
-        //    DestroybulletClientRpc();
-        //    PlayerMovement.bulletActive = false;
-        //}
+        if (collision.gameObject.tag == "Player" )
+        {
+            //PlayerStat.PlayerHealth -= 1;
+            Debug.Log("Hit");
+            DestroybulletClientRpc();
+            Destroy(gameObject);
+            
+            OnlineRespawn.OnlinePlayerActive = false;
+            if(!IsOwner)
+            {
+                collision.gameObject.transform.position = PlayerSpawnPoint.position;
+            }
+            PlayerMovement.offlinebullet = false;
+            PlayerMovement.bulletActive = false;
+        }
     }
+
+    
 
     [ServerRpc(RequireOwnership = false)]
     private void DestroybulletServerRpc()
@@ -79,5 +90,8 @@ public class Bullet : NetworkBehaviour
         DestroybulletServerRpc();
     }
 
-    
+    void testz()
+    {
+        
+    }
 }

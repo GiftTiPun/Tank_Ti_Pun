@@ -16,7 +16,7 @@ public class PlayerRespawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ReSpawn();
+        ReSpawnOffine();
     }
     //void fIXUpdate()
     //{
@@ -24,7 +24,7 @@ public class PlayerRespawn : MonoBehaviour
         
     //}
 
-    void ReSpawn()
+    void ReSpawnOffine()
     {
         if(PlayerActive == false)
         {
@@ -37,5 +37,7 @@ public class PlayerRespawn : MonoBehaviour
         }
         
     }
+
     
+
 }
