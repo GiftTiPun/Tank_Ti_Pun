@@ -11,6 +11,7 @@ public class PlayerMovement : NetworkBehaviour
     PlayerRespawn rePlayer;   
     public float bulletSpeed = 5;
     public static bool bulletActive = false;
+    public static bool offlinebullet = false;
     OnlineRespawn totalPlayer;
 
 
@@ -25,7 +26,7 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (IsClient && IsOwner)
         {
-            Movement();
+            MovementServerRpc();
             Die();
 
             if (bulletActive == false && totalPlayer.playeringame.Value >=1)
@@ -36,25 +37,20 @@ public class PlayerMovement : NetworkBehaviour
                 }
             }
         }
-        else if (!IsClient && !IsOwner)
+        else 
         {
+            //MovementServerRpc();
             Movement();
-            Shooting();
+            if (offlinebullet == false)
+            {
+                Shooting();
+            }
             Die();
         }
-        //if (!IsOwner)
-        //{
-        //    return;
-        //}
-        //if (bulletActive == false &&IsLocalPlayer)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        ShootingServerRpc();
-        //    }
-        //}
+        
+        
     }
-    
+
     void Movement()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -71,19 +67,51 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
+    [ServerRpc]
+    void MovementServerRpc()
+    {
+        MovementClientRpc();
+        //float h = Input.GetAxisRaw("Horizontal");
+        //float v = Input.GetAxisRaw("Vertical");
+        //if (h != 0)
+        //{
+        //    transform.position += new Vector3(h * player.moveSpeed * Time.deltaTime, 0, 0);
+        //    transform.rotation = Quaternion.Euler(0, 0, -90 * h);
+        //}
+        //else if (v != 0)
+        //{
+        //    transform.position += new Vector3(0, v * player.moveSpeed * Time.deltaTime, 0);
+        //    transform.rotation = Quaternion.Euler(0, 0, 90 - 90 * v);
+        //}
+    }
+    [ClientRpc]
+    void MovementClientRpc()
+    {
+        //MovementServerRpc();
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        if (h != 0)
+        {
+            transform.position += new Vector3(h * player.moveSpeed * Time.deltaTime, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, -90 * h);
+        }
+        else if (v != 0)
+        {
+            transform.position += new Vector3(0, v * player.moveSpeed * Time.deltaTime, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 90 - 90 * v);
+        }
+    }
+
     void Shooting()
     {
-        if (bulletActive == false)
-        {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
+                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                bullet.SpawnWithOwnership(OwnerClientId);
-                bulletActive = true;
+                offlinebullet = true;
 
             }
-        }
+        
 
     }
     void Die()
@@ -97,37 +125,21 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    //void createbullet()
-    //{
-    //    if (bulletActive == false)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.Space))
-    //        {
-    //            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-    //            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-    //            bulletActive = true;
-    //        }
-    //    }
-    //}
+   
 
     [ServerRpc(Delivery = RpcDelivery.Reliable)]
     void ShootingServerRpc()
     {
         ShootingClientRpc();
-        //NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
-        ////bullet.GetComponent<NetworkObject>().GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-
-        //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-        //bullet.SpawnWithOwnership(OwnerClientId);
-        //bulletActive = true;
+        
 
     }
     [ClientRpc]
     void ShootingClientRpc()
     {
-        //ShootingServerRpc();
+        
         NetworkObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation).GetComponent<NetworkObject>();
-        //bullet.GetComponent<NetworkObject>().GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+       
 
         bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
         bullet.SpawnWithOwnership(OwnerClientId);
@@ -135,15 +147,6 @@ public class PlayerMovement : NetworkBehaviour
 
     }
 
-    //Online Test
-    //private void FixedUpdate()
-    //{
-    //    if (IsClient && IsOwner)
-    //    {
-    //        Movement();
-
-    //    }
-
-    //}
+    
 
 }

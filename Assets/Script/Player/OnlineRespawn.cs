@@ -6,11 +6,15 @@ using Unity.Netcode;
 public class OnlineRespawn : NetworkBehaviour
 {
     public NetworkVariable<int> playeringame = new NetworkVariable<int>();
+    Transform PlayerSpawnPoint;
+    public GameObject PlayerPrefab;
+    public static bool OnlinePlayerActive =true;
+
 
     private void Update()
-    {
-        
+    {   
         Debug.Log("Num = "+playeringame.Value);
+        
     }
     public int PlayerinGame
     {
@@ -22,6 +26,7 @@ public class OnlineRespawn : NetworkBehaviour
 
     private void Start()
     {
+        PlayerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPlayer").GetComponent<Transform>();
         NetworkManager.Singleton.OnClientConnectedCallback += (id) =>
          {
              if(IsServer)
@@ -32,5 +37,13 @@ public class OnlineRespawn : NetworkBehaviour
             if (IsServer)
                 playeringame.Value--;
         };
+    }
+
+   void spawnPosition()
+    {
+        if(OnlinePlayerActive == false && IsOwner)
+        {
+            
+        }
     }
 }
