@@ -29,15 +29,16 @@ public class PlayerMovement : NetworkBehaviour
             MovementServerRpc();
             Die();
 
-            if (bulletActive == false && totalPlayer.playeringame.Value >=1)
+            if (totalPlayer.playeringame.Value >=1)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     ShootingServerRpc();
+                    
                 }
             }
         }
-        else 
+        else if((!IsClient && !IsOwner))
         {
             //MovementServerRpc();
             Movement();

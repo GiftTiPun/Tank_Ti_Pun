@@ -65,12 +65,13 @@ public class Bullet : NetworkBehaviour
             Debug.Log("Hit");
             DestroybulletClientRpc();
             Destroy(gameObject);
-            
+
+           /* player.hited()*/;
+
             OnlineRespawn.OnlinePlayerActive = false;
-            if(!IsOwner)
-            {
+            collision.gameObject.SetActive(false);
                 collision.gameObject.transform.position = PlayerSpawnPoint.position;
-            }
+            collision.gameObject.SetActive(true);
             PlayerMovement.offlinebullet = false;
             PlayerMovement.bulletActive = false;
         }
@@ -90,8 +91,5 @@ public class Bullet : NetworkBehaviour
         DestroybulletServerRpc();
     }
 
-    void testz()
-    {
-        
-    }
+   
 }

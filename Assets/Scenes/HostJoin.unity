@@ -2124,6 +2124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  OnlineHealth: 0
+  karmaPoint: 0
+  LifePointText: {fileID: 0}
 --- !u!114 &343185822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,7 +2154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playeringame:
     m_InternalValue: 0
-  PlayerActive: 0
   PlayerPrefab: {fileID: 6446512532791958781, guid: efbfa9f0745ed6342b3adf448b08b88f, type: 3}
 --- !u!114 &343185824
 MonoBehaviour:
@@ -23240,7 +23242,7 @@ GameObject:
   - component: {fileID: 1983803847}
   - component: {fileID: 1983803846}
   m_Layer: 5
-  m_Name: PlayerHealth
+  m_Name: PlayerHealthOnline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

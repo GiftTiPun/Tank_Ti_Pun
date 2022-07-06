@@ -18,11 +18,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         ReSpawnOffine();
     }
-    //void fIXUpdate()
-    //{
-    //    ReSpawn();
-        
-    //}
+    
 
     void ReSpawnOffine()
     {
