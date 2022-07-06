@@ -14,21 +14,33 @@ public class PlayerStat : NetworkBehaviour
     public static float onlineScore;
     public int OnlineHealth ;
 
-    public int karmaPoint;
+    
     [SerializeField] Text LifePointText;
 
-    //public void Start()
-    //{
-    //    OnlineHealth = 3;
-    //    LifePointText = GameObject.Find("PlayerHealthOnline").GetComponent<Text>();
+    public NetworkVariable<int> healthOnline = new NetworkVariable<int>();
 
-    //}
-   
+    public int HealthOnline
+    {
+        get
+        {
+            return healthOnline.Value;
+        }
+    }
+
+
+    public void Start()
+    {
+        
+        healthOnline.Value = 5;
+        OnlineHealth = 20;
+
+    }
+
     //public void hited()
     //{
-       
+
     //        LoseLifeaPointServerRpc(1);
-        
+
     //}
 
     //[ClientRpc]
@@ -51,13 +63,6 @@ public class PlayerStat : NetworkBehaviour
     //public void CheckLifeServerRpc()
     //{
     //    CheckLifeClientRpc();
-    //}
-    //public void Update()
-    //{
-        
-    //        CheckLifeServerRpc();
-       
-
     //}
 
 
