@@ -20,6 +20,7 @@ public class UISceneManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        currentEnemy = GameObject.FindObjectOfType<EnemySpawn>();
         if (PlayerStat.PlayerHealth <= 0)
         {
             BackToMenu();
