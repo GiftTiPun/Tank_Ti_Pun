@@ -270,7 +270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6446512531721791739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01699996, y: 1.9, z: 0}
+  m_LocalPosition: {x: -0.01699996, y: 2.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6758594879659934769}
@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 1178362065}
   - component: {fileID: -7407692558549386830}
   - component: {fileID: -771252333968082343}
+  - component: {fileID: 7786201798118952439}
   m_Layer: 0
   m_Name: PlayerTankPrefab
   m_TagString: Player
@@ -416,6 +417,18 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
+--- !u!114 &7786201798118952439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446512532791958781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d702cf7a4ca5c843b9233401eb54221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6786110605442450684
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +602,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7563483377632298804}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
