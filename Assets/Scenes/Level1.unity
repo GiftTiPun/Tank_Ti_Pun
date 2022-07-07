@@ -332,11 +332,6 @@ RectTransform:
   m_AnchoredPosition: {x: -75, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &70772085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7910990125426626940, guid: 5fc1e7080b1dc5a49b9c4740ab418319, type: 3}
-  m_PrefabInstance: {fileID: 2552752}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82366729
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba0c1d333a6ff44d91c0d675230f850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelWallPrefab: {fileID: 70772085}
+  LevelWallPrefab: {fileID: 7910990125426626940, guid: 5fc1e7080b1dc5a49b9c4740ab418319, type: 3}
   Shield: {fileID: 2032270724}
 --- !u!4 &82366732
 Transform:
@@ -550,7 +545,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 312103590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19aa11e163fe6844e8b2a506ff62763b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d804396de9f7b449af36f5e5b2206b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &312103592

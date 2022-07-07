@@ -16,6 +16,7 @@ public class PickupItem : MonoBehaviour
         if (collision.tag == "item")
         {
             itemname = collision.GetComponent<ItemStat>().itemname;
+            PlayerStat.score += 500;
             if(itemname == "ExtraLife")
             {
                 itemEffect.Item_ExtraLife();

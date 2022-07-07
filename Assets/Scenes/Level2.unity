@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba0c1d333a6ff44d91c0d675230f850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelWallPrefab: {fileID: 1355531905}
+  LevelWallPrefab: {fileID: 7174421471221156408, guid: b4e25f5a8751e9343860ded72b0f3c4d, type: 3}
   Shield: {fileID: 1923559490}
 --- !u!4 &880021206
 Transform:
@@ -1518,11 +1518,6 @@ Transform:
   m_Father: {fileID: 1939229590}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1355531905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7174421471221156408, guid: b4e25f5a8751e9343860ded72b0f3c4d, type: 3}
-  m_PrefabInstance: {fileID: 420692467}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1417294981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1754,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1646017416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19aa11e163fe6844e8b2a506ff62763b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d804396de9f7b449af36f5e5b2206b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &1646017418
