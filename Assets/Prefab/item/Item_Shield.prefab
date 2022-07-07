@@ -223,7 +223,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8633707598532437198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c324bf53d59eda4478214a4494adf630, type: 3}
+  m_Script: {fileID: 11500000, guid: 67241861081f1d0429e5591eee77d246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemname: Shield
