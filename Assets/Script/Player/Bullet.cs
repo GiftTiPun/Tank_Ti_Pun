@@ -48,8 +48,10 @@ public class Bullet : NetworkBehaviour
         }
          if (collision.gameObject.tag == "Water") 
         {
-           
-            PlayerMovement.bulletActive = false;
+            //Destroy(gameObject);
+            //DestroybulletClientRpc();
+            //PlayerMovement.offlinebullet = false;
+            //PlayerMovement.bulletActive = false;
         }
          if(collision.gameObject.tag == "EnemyBullet" )
         {
@@ -70,7 +72,7 @@ public class Bullet : NetworkBehaviour
 
             
             player.healthOnline.Value -= 1;
-            player.LoseLifeaPointServerRpc(5);
+            //player.LoseLifeaPointServerRpc(5);
 
 
             OnlineRespawn.OnlinePlayerActive = false;

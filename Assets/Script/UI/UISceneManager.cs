@@ -10,12 +10,14 @@ public class UISceneManager : MonoBehaviour
     EnemySpawn currentEnemy;
     public GameObject passText;
     PlayerRespawn rePlayer;
+    public GameObject uiTT1, uiTT2, uiTT3, uiTT4;
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStat>();
         currentEnemy = GameObject.FindObjectOfType<EnemySpawn>();
         rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
+        Time.timeScale = 0f;
     }
 
     private void FixedUpdate()
@@ -24,12 +26,10 @@ public class UISceneManager : MonoBehaviour
         if (PlayerStat.PlayerHealth <= 0)
         {
             BackToMenu();
-            PassValue.currentlevel = 1;
-            PlayerStat.score = 0;
-            PlayerStat.PlayerHealth = 3;
+            
 
         }
-        if(rePlayer != null)
+        if (rePlayer != null)
         {
             if (currentEnemy.EnemyOnsite.Length == 0 && currentEnemy.Enemylist.Count == 0)
             {
@@ -37,7 +37,7 @@ public class UISceneManager : MonoBehaviour
 
             }
         }
-        
+
     }
 
     IEnumerator coroutineA()
@@ -57,23 +57,32 @@ public class UISceneManager : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(1);
+        resetValue();
     }
     public void GotoLoading()
     {
-        SceneManager.LoadScene("LoadingStage");
+        if (PassValue.currentlevel < 5)
+        {
+            SceneManager.LoadScene("LoadingStage");
+        }
+        else
+        {
+
+            BackToMenu();
+        }
     }
-    
+
     public void PassLevel()
     {
         PassValue.currentlevel += 1;
         SceneManager.LoadScene("ScoreCal");
     }
 
-   
+
 
     public void NextLevel()
     {
-        if(PassValue.currentlevel <5)
+        if (PassValue.currentlevel < 5)
         {
             SceneManager.LoadScene("Level" + PassValue.currentlevel);
         }
@@ -81,5 +90,30 @@ public class UISceneManager : MonoBehaviour
         {
             BackToMenu();
         }
+    }
+
+    public void resetValue()
+    {
+        PassValue.currentlevel = 1;
+        PlayerStat.score = 0;
+        PlayerStat.PlayerHealth = 3;
+    }
+
+    public void Tutorial1()
+    {
+        uiTT1.SetActive(false);
+    }
+    public void Tutorial2()
+    {
+        uiTT2.SetActive(false);
+    }
+    public void Tutorial3()
+    {
+        uiTT3.SetActive(false);
+    }
+    public void Tutorial4()
+    {
+        uiTT4.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
