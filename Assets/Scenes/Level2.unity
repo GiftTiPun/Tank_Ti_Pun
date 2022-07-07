@@ -965,7 +965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017646441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.53, y: -0.4, z: 0}
+  m_LocalPosition: {x: -7.37, y: -0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 880021206}
@@ -1403,7 +1403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294642538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.02, y: 0.45, z: 0}
+  m_LocalPosition: {x: 5.22, y: 4.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 880021206}
@@ -1542,7 +1542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417294981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: -0.42, z: 0}
+  m_LocalPosition: {x: 4.02, y: -2.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 880021206}
@@ -2078,7 +2078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830169385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.05, y: 0.38, z: 0}
+  m_LocalPosition: {x: -8.05, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 880021206}
@@ -2193,13 +2193,13 @@ MonoBehaviour:
   Enemylist:
   - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
   - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
-  - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
+  - {fileID: 122157087836721546, guid: 26c78252eb8b909408d4249bae86ff35, type: 3}
+  - {fileID: 122157087836721546, guid: 26c78252eb8b909408d4249bae86ff35, type: 3}
+  - {fileID: 122157087836721546, guid: 26c78252eb8b909408d4249bae86ff35, type: 3}
+  - {fileID: 4014964365036779437, guid: 1e508b675fedf094db24204fef7a22ab, type: 3}
   - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
   - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
   - {fileID: 4014964365036779437, guid: 1e508b675fedf094db24204fef7a22ab, type: 3}
-  - {fileID: 4014964365036779437, guid: 1e508b675fedf094db24204fef7a22ab, type: 3}
-  - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
-  - {fileID: 5583048170237937426, guid: 6f74ab8ba7099604c898f48a7fabf7ca, type: 3}
   - {fileID: 4014964365036779437, guid: 1e508b675fedf094db24204fef7a22ab, type: 3}
 --- !u!4 &1939229590
 Transform:
