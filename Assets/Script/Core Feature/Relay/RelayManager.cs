@@ -13,11 +13,12 @@ using UnityEngine.UI;
 public class RelayManager : Singleton<RelayManager>
 {
     public Text JC;
+  
     [SerializeField]
     private string environment = "production";
 
     [SerializeField]
-    private int maxNumberOfConnections = 2;
+    private int maxNumberOfConnections = 1;
 
     public bool IsRelayEnabled =>
         Transport != null && Transport.Protocol == UnityTransport.ProtocolType.RelayUnityTransport;
@@ -96,6 +97,9 @@ public class RelayManager : Singleton<RelayManager>
         return relayJoinData;
     }
 
+   
+
+    
 
 }
 

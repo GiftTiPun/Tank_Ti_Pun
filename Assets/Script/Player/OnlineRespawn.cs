@@ -9,12 +9,20 @@ public class OnlineRespawn : NetworkBehaviour
     Transform PlayerSpawnPoint;
     public GameObject PlayerPrefab;
     public static bool OnlinePlayerActive =true;
+    public GameObject alert;
 
 
     private void Update()
     {   
         Debug.Log("Num = "+playeringame.Value);
-        
+        if(playeringame.Value >=1)
+        {
+            alert.SetActive(true);
+        }
+        else
+        {
+            alert.SetActive(false);
+        }
     }
     public int PlayerinGame
     {
@@ -38,12 +46,7 @@ public class OnlineRespawn : NetworkBehaviour
                 playeringame.Value--;
         };
     }
+   
 
-   void spawnPosition()
-    {
-        if(OnlinePlayerActive == false && IsOwner)
-        {
-            
-        }
-    }
+
 }

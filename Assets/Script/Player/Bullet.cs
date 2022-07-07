@@ -68,11 +68,6 @@ public class Bullet : NetworkBehaviour
             DestroybulletClientRpc();
             Destroy(gameObject);
 
-            /* player.hited()*/
-
-            
-            player.healthOnline.Value -= 1;
-            //player.LoseLifeaPointServerRpc(5);
 
 
             OnlineRespawn.OnlinePlayerActive = false;
