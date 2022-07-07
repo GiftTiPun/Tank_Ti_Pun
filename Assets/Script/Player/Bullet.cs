@@ -30,7 +30,23 @@ public class Bullet : NetworkBehaviour
             PlayerMovement.offlinebullet = false;
             PlayerMovement.bulletActive = false;
         }
-         if (collision.gameObject.tag == "Breakable_Wall" )
+        if (collision.gameObject.tag == "Tank")
+        {
+            
+            collision.gameObject.GetComponent<EnemyClass>().enemy_Health -= 1;
+            if (collision.gameObject.GetComponent<EnemyClass>().enemy_Health == 0)
+            {
+                PlayerStat.score += collision.gameObject.GetComponent<EnemyClass>().score;
+                Debug.Log(PlayerStat.score);
+                Destroy(collision.gameObject);
+            }
+            Debug.Log(PlayerStat.score);
+            Destroy(gameObject);
+            PlayerMovement.offlinebullet = false;
+            PlayerMovement.bulletActive = false;
+        }
+
+        if (collision.gameObject.tag == "Breakable_Wall" )
         {
             DestroybulletClientRpc();
             Destroy(gameObject);

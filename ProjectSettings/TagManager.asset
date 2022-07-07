@@ -15,6 +15,7 @@ TagManager:
   - Shield
   - item
   - Ice
+  - Tank
   layers:
   - Default
   - TransparentFX
