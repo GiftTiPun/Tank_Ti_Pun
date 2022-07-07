@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5680974195143220394}
   - component: {fileID: 2996173724003513841}
-  - component: {fileID: 764598810}
+  - component: {fileID: -7137022109747733285}
   m_Layer: 0
   m_Name: Item_ExtraLife
   m_TagString: item
@@ -50,7 +50,7 @@ CircleCollider2D:
   m_Offset: {x: -0.0022399426, y: 0}
   serializedVersion: 2
   m_Radius: 0.27460647
---- !u!114 &764598810
+--- !u!114 &-7137022109747733285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3974199207268956265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67241861081f1d0429e5591eee77d246, type: 3}
+  m_Script: {fileID: 11500000, guid: c324bf53d59eda4478214a4494adf630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemname: ExtraLife

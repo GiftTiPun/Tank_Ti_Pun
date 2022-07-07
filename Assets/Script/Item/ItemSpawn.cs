@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemSpawn : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ItemSpawn : MonoBehaviour
     [SerializeField] int spawnTime = 0;
     public Transform[] spawnpoint;
     public List<GameObject> Itemlist = new List<GameObject>();
+    public Text Remain_EnemyText;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class ItemSpawn : MonoBehaviour
     {
         Remaining_Enemy = GameObject.FindObjectOfType<EnemySpawn>().Enemylist.Count + GameObject.FindObjectOfType<EnemySpawn>().EnemyOnsite.Length;
         CheckSpawnItem();
+        Remain_EnemyText.text = Remaining_Enemy.ToString();
     }
 
     void CheckSpawnItem()
