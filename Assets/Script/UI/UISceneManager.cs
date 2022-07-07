@@ -17,7 +17,11 @@ public class UISceneManager : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerStat>();
         currentEnemy = GameObject.FindObjectOfType<EnemySpawn>();
         rePlayer = GameObject.FindObjectOfType<PlayerRespawn>();
-        Time.timeScale = 0f;
+        if(PassValue.currentlevel == 1)
+        {
+            Time.timeScale = 0f;
+        }
+        
     }
 
     private void FixedUpdate()
